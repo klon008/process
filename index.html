@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Распределение памяти разделами переменной величины</title>
+    <link rel="stylesheet" type="text/css" href="styles/css.css">
+    <!--<script src="scripts/browser-compiler/coffeescript.js"></script>-->
+    <script src="scripts/modernizr-custom.js"></script> <!--Полифил для ie readfile -->
+    <script src="scripts/tippy.all.min.js"></script> <!-- Всплывающие подсказки -->
+</head>
+<body>
+<input type="file" id="fileInput" name="file" accept=".txt"/>
+<div id="container" style="min-width: 500px"></div>
+<div class="allProcessInfo">
+    <div id="processesTabsBtns" class="tab">
+
+    </div>
+    <div class="tabs" id="prcoessTextFromFileTabs">
+
+    </div>
+</div>
+<div>
+    <h2>Память: <span id="memory_free">0/0</span>  <!--<button id="defrag">Запустить дефрагментацию</button>--></h2>
+
+</div>
+<div id="memory_wrapper">
+
+    <div id="memory_table"></div>
+</div>
+<div class="flexbox" id="devices">
+    <div id="processor">
+        <h2>Процессор</h2>
+        <div>Состояние: <span id="processor_state">Свободен</span></div>
+        <div>Процесс: <span id="processor_cur_process"></span></div>
+        <div>Выполняется: <span id="processor_conext">- из -</span></div>
+        <progress id="tick_progress" max="2000" value="0"></progress>
+        <button id="processor_start">Запустить планировщик</button>
+    </div>
+    <div id="console_wrap">
+        <button>[ ]</button>
+        <div id="console">
+            <div>Добро пожаловать в консоль моделирования процессов!</div>
+        </div>
+    </div>
+    <div id="io_wrap" class="flexbox disabled" style="width:auto;">
+        <div id="Spooling">
+        </div>
+        <div id="inputoutput_device">
+            <h2>Устройство ввода/вывода</h2>
+            <sup>устройства вывода на экран котят</sup>
+            <div>PID: <span id="inputoutput_device_pid"></span></div>
+            <div>Процесс: <span id="inputoutput_device_name"></span></div>
+            <div>Состояние: <span id="inputoutput_device_state">Свободно</span></div>
+            <div>Процесс: <span id="inputoutput_device_process"></span></div>
+            <progress id="tick_progress_io" max="5000" value="0"></progress><br/>
+            <small>Вероятность ошибки при выполнении <br/>процесса в спуллинге (вероятность/кол-во операций):</small><br/>
+            <input id="iorange" type="range" min="0" max="100" step="1" value="5"> <span id="range-val">5%</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="column" style="">
+        <h2>Выполнене</h2>
+        <div id="runing_column" class="process_column">
+        </div>
+    </div>
+    <div class="column" style="">
+        <h2>Готовность</h2>
+        <div id="ready_column" class="process_column"></div>
+    </div>
+    <div class="column" style="">
+        <h2>Ожидание</h2>
+        <div id="waiting_column" class="process_column"></div>
+    </div>
+</div>
+<script type="text/javascript" src="scripts/js.js" charset="utf-8"></script>
+</body>
+</html>
